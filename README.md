@@ -1,34 +1,35 @@
-# node-js-getting-started
+## Description
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
+Application in Heroku using:
 
-This application supports the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
+- Nodejs
+- Angular 1.x
+- bootstrap
+- bower
+- gulp
 
-## Running Locally
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku CLI](https://cli.heroku.com/) installed.
-
-```sh
-$ git clone git@github.com:heroku/node-js-getting-started.git # or clone your own fork
-$ cd node-js-getting-started
-$ npm install
-$ npm start
-```
-
-Your app should now be running on [localhost:5000](http://localhost:5000/).
-
-## Deploying to Heroku
+## Installation
 
 ```
-$ heroku create
-$ git push heroku master
-$ heroku open
+npm install
+bower install
+gulp
+
 ```
-or
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+## Start Nodejs Express 4 server
+```
+npm start
+```
+Or if you have a Heroku account
 
-## Documentation
+```
+heroku local
+```
+
+
+## Heroku Documentation
 
 For more information about using Node.js on Heroku, see these Dev Center articles:
 
