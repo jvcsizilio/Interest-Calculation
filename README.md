@@ -8,6 +8,7 @@ Application in Heroku using:
 - bower
 - gulp
 
+[Demo](https://angular-app-on-heroku-2017.herokuapp.com/).
 
 ## Installation
 
