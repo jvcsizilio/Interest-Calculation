@@ -10,7 +10,9 @@ var plugins = require("gulp-load-plugins")({
 
 var globalFiles = [
 	'public/js/app.js',
-    'public/js/indexCtrl.js'
+    'public/js/indexCtrl.js',
+	'public/stylesheets/cover.css',
+	'public/stylesheets/styles.css'
 ];
 
 var bowerFiles = [
@@ -38,7 +40,7 @@ gulp.task('dev', function() {
 
     return gulp.src('views/pages/index.ejs')
 		.pipe(plugins.inject(
-			gulp.src(files, {read: false}), 
+			gulp.src(files, {read: false}),
 			{ignorePath: '/public/'}
 		))
         .pipe(gulp.dest('views/pages/')); // create file

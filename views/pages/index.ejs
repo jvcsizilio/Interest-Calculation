@@ -3,9 +3,16 @@
 <head>
     <title>Angular application on Heroku</title>
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="João Sizílio">
+
     <!-- inject:css -->
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bower_components/angular-ui-notification/dist/angular-ui-notification.min.css">
+    <link rel="stylesheet" href="/stylesheets/cover.css">
+    <link rel="stylesheet" href="/stylesheets/styles.css">
     <!-- endinject -->
 
     <!-- inject:js -->
@@ -25,7 +32,153 @@
 </head>
 
 <body ng-app="app" ng-controller="indexCtrl">
-    Hello World!
+
+    <div class="site-wrapper">
+        <div class="site-wrapper-inner">
+
+            <div class="cover-container">
+                <!-- <div class="masthead clearfix">
+                    <div class="inner">
+                        <nav class="nav nav-masthead">
+                            <a class="nav-link active" href="#">Home</a>
+                            <a class="nav-link" href="#">Features</a>
+                            <a class="nav-link" href="#">Contact</a>
+                        </nav>
+                    </div>
+                </div> -->
+
+                <!-- FORM -->
+                <div class="inner cover app-box" ng-show="showForm">
+                    <div class="row">
+                        <h1 class="cover-heading">Interest Calculation</h1>
+                        <p class="lead" style="font-size: 16px;">Fill the fields and click in CALCULATE</p>
+                        <hr>
+                    </div>
+
+                    <div class="row">
+
+                        <!-- INTEREST -->
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="interest_id">Interest</label>
+                                <select ng-model="model.interest" class="form-control" id="interest_id">
+                                    <option value="simple">Simple</option>
+                                    <option value="compound">Compound</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- PRINCIPAL -->
+                        <div class="col-md-12" ng-show="model.interest">
+                            <div class="form-group">
+                                <label for="principal_id">Principal</label>
+                                <input type="text" class="form-control"
+                                        id="principal_id"
+                                        ng-model="model.principal"
+                                        ui-money-mask>
+                            </div>
+                        </div>
+
+                        <!-- RATE OF INTEREST -->
+                        <div class="col-md-6" ng-show="model.interest">
+                            <div class="form-group">
+                                <label for="rate_id">Rate of interest</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control"
+                                            ng-model="model.rate">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-primary">%</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TIME PERIOD -->
+                        <div class="col-md-6" ng-show="model.interest">
+                            <div class="form-group">
+                                <label for="rate_id">Time period</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control"
+                                            ng-model="model.period">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-primary">months</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- COMPOUND FREQUENCY -->
+                        <div class="col-md-12" ng-show="model.interest == 'compound'">
+                            <div class="form-group">
+                                <label for="interest_id">Compound frequency</label>
+                                <select ng-model="model.frequency" class="form-control" id="interest_id">
+                                    <option value="12">Yearly</option>
+                                    <option value="6">Half yearly</option>
+                                    <option value="4">Quarterly</option>
+                                    <option value="1">Monthly</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- CALCULATE BUTTON -->
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="#" class="btn btn-lg btn-secondary" ng-click="calculate()">Calculate</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RESULTS -->
+                <div class="inner cover app-box" ng-show="!showForm">
+                    <div class="row">
+                        <h1 class="cover-heading">Result</h1>
+
+                        <div class="col-md-4">
+                            <a href="#" class="btn btn-lg btn-secondary" ng-click="back()">Back</a>
+                        </div>
+                        <div class="col-md-8">
+                            <p><b>Total:</b> {{result.total}} $</p>
+                            <p><b>Total interest:</b> {{result.totalInterest}} $</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <hr>
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Period</th>
+                                        <th>Initial</th>
+                                        <th>Interest</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in result.items track by $index">
+                                        <td>{{$index + 1}} </td>
+                                        <td>{{item.initial}} $</td>
+                                        <td>{{item.interest}} $</td>
+                                        <td>{{item.total}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
 </body>
 
 </html>
